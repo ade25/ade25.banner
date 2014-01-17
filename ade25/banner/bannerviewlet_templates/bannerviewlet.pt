@@ -1,6 +1,7 @@
+<h2>We are online with the banner viewlet - even on the site root</h2>
 <section class="app-banner carousel carousel-fade slide home-slider"
     id="app-banner"
-    i18n:domain="atix.sitecontent"
+    i18n:domain="ade25.banner"
     tal:condition="viewlet/has_banners"
     tal:define="show_carousel viewlet/show_carousel"
     tal:attributes="class python:show_carousel and 'app-banner carousel carousel-fade slide home-slider' or 'app-banner slide home-slider'">

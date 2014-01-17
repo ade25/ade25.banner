@@ -9,12 +9,12 @@ Create a ContentBanner object and put it in a folder
     Create the object::
 
     >>> from zope.component import createObject
-    >>> container = createObject('atix.sitecontent.contentbanner')
+    >>> container = createObject('ade25.banner.contentbanner')
 
     Verify it's type::
 
     >>> container.portal_type
-    'atix.sitecontent.contentbanner'
+    'ade25.banner.contentbanner'
 
     Give it a title::
 

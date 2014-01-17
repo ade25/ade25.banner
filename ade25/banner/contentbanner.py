@@ -4,25 +4,24 @@ from five import grok
 from plone import api
 from zope.component import getMultiAdapter
 
-from z3c.form import group, field
 from zope import schema
-from zope.interface import invariant, Invalid
-from zope.schema.interfaces import IContextSourceBinder
-from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
-
 from plone.dexterity.content import Item
 
-from plone.directives import dexterity, form
+from plone.directives import form
 from plone.app.textfield import RichText
-from plone.namedfile.field import NamedImage, NamedFile
-from plone.namedfile.field import NamedBlobImage, NamedBlobFile
+from plone.namedfile.field import NamedBlobImage
 from plone.namedfile.interfaces import IImageScaleTraversable
 
-from z3c.relationfield.schema import RelationList, RelationChoice
-from plone.formwidget.contenttree import ObjPathSourceBinder
-from plone.uuid.interfaces import IUUID
+from Products.Five.utilities.marker import mark
 
-from atix.sitecontent import MessageFactory as _
+from plone.uuid.interfaces import IUUID
+from plone.app.layout.navigation.interfaces import INavigationRoot
+
+from ade25.banner.interfaces import IBannerEnabled
+
+from ade25.banner import MessageFactory as _
+
+FALLBACK_IMG = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs='
 
 
 class IContentBanner(form.Schema, IImageScaleTraversable):
@@ -136,9 +135,11 @@ class BannerView(grok.View):
 
     def parent_banners(self):
         context = aq_inner(self.context)
-        parent = aq_parent(context)
-        items = parent.restrictedTraverse('@@folderListing')(
-            portal_type='atix.sitecontent.contentbanner',
+        asignment_context = aq_parent(context)
+        if INavigationRoot.providedBy(context):
+            asignment_context = context
+        items = asignment_context.restrictedTraverse('@@folderListing')(
+            portal_type='ade25.banner.contentbanner',
             sort_on='getObjPositionInParent')
         return items
 
@@ -153,4 +154,17 @@ class BannerView(grok.View):
         scale = scales.scale('image')
         if scale is not None:
             image_tag = scale.url
+        else:
+            image_tag = FALLBACK_IMG
         return image_tag
+
+
+class EnableSiteBanners(grok.View):
+    grok.context(INavigationRoot)
+    grok.require('cmf.ManagePortal')
+    grok.name('enable-site-banners')
+
+    def render(self):
+        portal = api.portal.get()
+        mark(portal, IBannerEnabled)
+        return self.request.response.redirect(portal.absolute_url())

@@ -8,13 +8,15 @@
             <div class="col-md-6 fadein scaleInv anim_1">
                 <div class="fadein scaleInv anim_2">
                     <h1 class="carouselText1 animated fadeInUpBig">
-                    <span class="colortext"
-                        tal:content="context/headline">Lösungen</span></h1>
+                        <span class="colortext"
+                            tal:content="context/headline">
+                            Headline</span>
+                    </h1>
                 </div>
                 <div class="fadein scaleInv anim_1">
                     <p class="carouselText2 animated fadeInLeft"
                         tal:content="context/Description">
-                        Virtualisierung, Hochverfügbarkeit, Dynamische Rechenzentren, Clustering, Konfigurations-Management und Cloud Computing.
+                        Description
                     </p>
                 </div>
             </div>

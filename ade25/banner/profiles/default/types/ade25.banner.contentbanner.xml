@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
-<object name="ade25.panelpage.contentbanner"
+<object name="ade25.banner.contentbanner"
    meta_type="Dexterity FTI"
-   i18n:domain="ade25.panelpage" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+   i18n:domain="ade25.banner" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
   <property name="title" i18n:translate="">ContentBanner</property>
   <property name="description"
     i18n:translate="">A banner acting as a page header</property>
   <property name="icon_expr">string:${portal_url}/document_icon.png</property>
-  <property name="factory">ade25.panelpage.contentbanner</property>
-  <property name="global_allow">False</property>
+  <property name="factory">ade25.banner.contentbanner</property>
+  <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types" />
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">ade25.panelpage.contentbanner.IContentBanner</property>
-  <property name="klass">ade25.panelpage.contentbanner.ContentBanner</property>
+  <property name="schema">ade25.banner.contentbanner.IContentBanner</property>
+  <property name="klass">ade25.banner.contentbanner.ContentBanner</property>
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />

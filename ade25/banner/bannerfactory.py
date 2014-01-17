@@ -16,9 +16,9 @@ from plone.app.textfield import RichText
 from plone.dexterity.interfaces import IDexterityFTI
 from Products.statusmessages.interfaces import IStatusMessage
 
-from atix.sitecontent.contentbanner import IContentBanner
+from ade25.banner.contentbanner import IContentBanner
 
-from atix.sitecontent import MessageFactory as _
+from ade25.banner import MessageFactory as _
 
 
 class IContentBannerEdit(form.Schema):
@@ -81,7 +81,7 @@ class ContentBannerEditForm(form.SchemaEditForm):
     def getContent(self):
         context = aq_inner(self.context)
         fti = getUtility(IDexterityFTI,
-                         name='atix.sitecontent.contentbanner')
+                         name='ade25.banner.contentbanner')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         data = {}
@@ -92,7 +92,7 @@ class ContentBannerEditForm(form.SchemaEditForm):
     def applyChanges(self, data):
         context = aq_inner(self.context)
         fti = getUtility(IDexterityFTI,
-                         name='atix.sitecontent.contentbanner')
+                         name='ade25.banner.contentbanner')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         for key, value in fields:
@@ -146,7 +146,7 @@ class ContentBannerImageEditForm(form.SchemaEditForm):
     def getContent(self):
         context = aq_inner(self.context)
         fti = getUtility(IDexterityFTI,
-                         name='atix.sitecontent.contentbanner')
+                         name='ade25.banner.contentbanner')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         data = {}
@@ -157,7 +157,7 @@ class ContentBannerImageEditForm(form.SchemaEditForm):
     def applyChanges(self, data):
         context = aq_inner(self.context)
         fti = getUtility(IDexterityFTI,
-                         name='atix.sitecontent.contentbanner')
+                         name='ade25.banner.contentbanner')
         schema = fti.lookupSchema()
         fields = getFieldsInOrder(schema)
         for key, value in fields:

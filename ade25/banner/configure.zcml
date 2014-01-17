@@ -34,6 +34,8 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <interface interface="ade25.banner.interfaces.IBannerEnabled" />
+
   <plone:behavior
         title="Banner and Carousel Display"
         description="Mark content types as banner enabled to display the banner and carousel viewlet"

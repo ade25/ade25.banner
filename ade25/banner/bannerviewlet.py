@@ -5,15 +5,15 @@ from plone import api
 from plone.app.layout.viewlets.interfaces import IPortalFooter
 from plone.uuid.interfaces import IUUID
 
-from atix.sitecontent.pagebanner import IBannerEnabled
-from atix.sitecontent.contentbanner import IContentBanner
+from ade25.banner.interfaces import IBannerEnabled
+from ade25.banner.contentbanner import IContentBanner
 
 
 class BannerViewlet(grok.Viewlet):
     grok.context(IBannerEnabled)
     grok.viewletmanager(IPortalFooter)
     grok.require('zope2.View')
-    grok.name('atix.sitecontent.PageBannerViewlet')
+    grok.name('ade25.banner.PageBannerViewlet')
 
     def update(self):
         self.has_banners = len(self.banners()) > 0

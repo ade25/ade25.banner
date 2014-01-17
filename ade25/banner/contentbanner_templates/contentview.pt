@@ -3,7 +3,7 @@
                 editable view/is_editable"
     tal:attributes="class string:app-contentbanner ${klass};
                     data-appui python:editable and 'editable' or 'not-editable'"
-    i18n:domain="atix.sitecontent">
+    i18n:domain="ade25.banner">
 
     <div class="contentpanel-editbar animated">
         <p tal:content="context/Title">Content Panel Headline</p>
