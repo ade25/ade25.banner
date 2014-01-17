@@ -19,3 +19,8 @@ Hint:
 
 The package provides a helper view to set this marker interface on the site
 root for you callable via '${portal_ul}/@@enable-site-banners'.
+
+The banner viewlet will not display though as long as you have a default
+page set (e.g. the default front-page document). In this case you would need
+to come up with a generic landing page type and implement the IBannerEnabled
+marker interface or you enable the behavior for documents as well.
