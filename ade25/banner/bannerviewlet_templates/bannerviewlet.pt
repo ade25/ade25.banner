@@ -1,4 +1,3 @@
-<h2>We are online with the banner viewlet - even on the site root</h2>
 <section class="app-banner carousel carousel-fade slide home-slider"
     id="app-banner"
     i18n:domain="ade25.banner"
