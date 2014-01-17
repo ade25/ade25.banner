@@ -1,0 +1,49 @@
+<div class="app-contentbanner"
+    tal:define="klass view/computed_klass;
+                editable view/is_editable"
+    tal:attributes="class string:app-contentbanner ${klass};
+                    data-appui python:editable and 'editable' or 'not-editable'"
+    i18n:domain="atix.sitecontent">
+
+    <div class="contentpanel-editbar animated">
+        <p tal:content="context/Title">Content Panel Headline</p>
+        <a class="btn btn-primary btn-editpanel" href="#"
+            tal:attributes="href string:${context/absolute_url}/@@edit-banner">
+            edit
+        </a>
+        <a class="btn btn-default" href="#"
+            tal:attributes="href string:${context/absolute_url}/@@edit-banner-image">
+            <i class="fa fa-picture-o"></i>
+        </a>
+        <a class="btn btn-default pull-right" href="#"
+            tal:attributes="href string:${context/absolute_url}/@@transition-state?uuid=${context/UID}">
+            <i class="fa fa-share-square-o"></i>
+        </a>
+    </div>
+    <div class="app-editdetails" tal:condition="editable">
+        <p class="text-muted">
+            <span tal:content="context/Title" />
+            <small class="contentblock-state pull-right"
+                i18n:translate=""
+                tal:content="view/item_state_info" />
+        </p>
+    </div>
+    <div class="contentbanner" tal:condition="view/has_data">
+            <div tal:replace="structure view/render_item" />
+    </div>
+
+    <div class="no-data-panel" tal:condition="not:view/has_data">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+                <div class="no-data-sign">
+                    <i class="fa fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <h3 class="no-data-title" i18n:translate="">
+                    This item does not have any content yet
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
