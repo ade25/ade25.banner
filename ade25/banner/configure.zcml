@@ -26,12 +26,19 @@
        in Plone -->
   <genericsetup:registerProfile
       name="default"
-      title="Ade25 Banner management"
+      title="Ade25 Banner Management"
       directory="profiles/default"
       description="Extension profile for Ade25 Banner management"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <plone:behavior
+        title="Banner and Carousel Display"
+        description="Mark content types as banner enabled to display the banner and carousel viewlet"
+        provides="ade25.banner.interfaces.IBannerEnabled"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
 
 </configure>

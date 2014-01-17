@@ -16,8 +16,6 @@ from plone.app.textfield import RichText
 from plone.dexterity.interfaces import IDexterityFTI
 from Products.statusmessages.interfaces import IStatusMessage
 
-from atix.sitecontent.sectionfolder import ISectionFolder
-from atix.sitecontent.contentpage import IContentPage
 from atix.sitecontent.contentbanner import IContentBanner
 
 from atix.sitecontent import MessageFactory as _
@@ -108,12 +106,8 @@ class ContentBannerEditForm(form.SchemaEditForm):
         IStatusMessage(self.request).addStatusMessage(
             _(u"The banner has successfully been updated"),
             type='info')
-        next_url = context.absolute_url()
         parent = aq_parent(context)
-        if ISectionFolder.providedBy(parent):
-            next_url = parent.absolute_url()
-        if IContentPage.providedBy(parent):
-            next_url = parent.absolute_url()
+        next_url = parent.absolute_url()
         return self.request.response.redirect(next_url)
 
 
@@ -177,10 +171,6 @@ class ContentBannerImageEditForm(form.SchemaEditForm):
         IStatusMessage(self.request).addStatusMessage(
             _(u"The banner has successfully been updated"),
             type='info')
-        next_url = context.absolute_url()
         parent = aq_parent(context)
-        if ISectionFolder.providedBy(parent):
-            next_url = parent.absolute_url()
-        if IContentPage.providedBy(parent):
-            next_url = parent.absolute_url()
+        next_url = parent.absolute_url()
         return self.request.response.redirect(next_url)
