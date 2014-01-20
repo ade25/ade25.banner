@@ -159,6 +159,24 @@ class BannerView(grok.View):
         return image_tag
 
 
+class TransitionState(grok.View):
+    grok.context(IContentBanner)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('transition-state')
+
+    def render(self):
+        context = aq_inner(self.context)
+        uuid = self.request.get('uuid', '')
+        state = api.content.get_state(obj=context)
+        if state == 'published':
+            api.content.transition(obj=context, transition='retract')
+        else:
+            api.content.transition(obj=context, transition='publish')
+        came_from = api.content.get(UID=uuid)
+        next_url = came_from.absolute_url()
+        return self.request.response.redirect(next_url)
+
+
 class EnableSiteBanners(grok.View):
     grok.context(INavigationRoot)
     grok.require('cmf.ManagePortal')
