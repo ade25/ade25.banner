@@ -1,4 +1,4 @@
-<section class="app-banner carousel carousel-fade slide home-slider"
+<section class="app-banner carousel carousel-fade slide home-slider" data-ride="carousel"
     id="app-banner"
     i18n:domain="ade25.banner"
     tal:condition="viewlet/has_banners"
@@ -20,7 +20,7 @@
                     class="active" data-slide-to="0" data-target="#a-slide"></li>
             </tal:block>
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner dim-in-1">
             <tal:block tal:repeat="item viewlet/banners">
                 <tal:item tal:define="banner_idx repeat/item/index;
                                       item_uid item/UID;">
