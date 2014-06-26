@@ -125,6 +125,13 @@ class BannerView(grok.View):
             primary = True
         return primary
 
+    def has_data(self):
+        context = aq_inner(self.context)
+        has_content = False
+        if (context.headline or context.Description()):
+            has_content = True
+        return has_content
+
     def banner_position(self):
         context = aq_inner(self.context)
         counter = 0

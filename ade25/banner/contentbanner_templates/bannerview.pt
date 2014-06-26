@@ -3,22 +3,21 @@
                 base_class string:app-banner-item-${view/banner_position} item;"
     tal:attributes="style string:${view/banner_background};
                     class python:is_active and base_class + ' active' or base_class">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 fadein scaleInv anim_1">
-                <div class="fadein scaleInv anim_2">
-                    <h1 class="carouselText1 animated fadeInUpBig">
-                        <span class="colortext"
-                            tal:content="context/headline">
-                            Headline</span>
-                    </h1>
-                </div>
-                <div class="fadein scaleInv anim_1">
-                    <p class="carouselText2 animated fadeInLeft"
-                        tal:content="context/Description">
-                        Description
-                    </p>
-                </div>
+    <div class="app-banner-item-content">
+        <div class="app-banner-item-body fadein scaleInv anim_1"
+            tal:condition="view/has_data">
+            <div class="fadein scaleInv anim_2">
+                <h1 class="carouselText1 animated fadeInUpBig">
+                    <span class="colortext"
+                        tal:content="context/headline">
+                        Headline</span>
+                </h1>
+            </div>
+            <div class="fadein scaleInv anim_1">
+                <p class="carouselText2 animated fadeInLeft"
+                    tal:content="context/Description">
+                    Description
+                </p>
             </div>
         </div>
     </div>
