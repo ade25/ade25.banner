@@ -111,13 +111,6 @@ class BannerView(grok.View):
     grok.require('zope2.View')
     grok.name('banner-view')
 
-    def has_data(self):
-        context = aq_inner(self.context)
-        has_content = False
-        if (context.headline or context.Description()):
-            has_content = True
-        return has_content
-
     def banner_background(self):
         img_tag = self.getImageTag()
         style = 'background:url({0}) no-repeat 50% 0 transparent;'.format(
