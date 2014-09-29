@@ -1,3 +1,24 @@
+<div class="app-banner xowl-carousel"
+    tal:condition="viewlet/has_banners"
+    tal:define="show_carousel viewlet/show_carousel"
+    tal:attributes="class python:show_carousel and 'app-banner app-banner-carousel' or 'app-banner'">
+    <tal:block tal:condition="not:show_carousel">
+        <div class="app-banner-content">
+            <div tal:define="item_uid viewlet/static_banner"
+                tal:replace="structure python:viewlet.render_item(item_uid)" />
+        </div>
+    </tal:block>
+    <tal:block tal:condition="show_carousel">
+        <div class="app-banner-content">
+            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=1" data-src-retina="http://placehold.it/350x250&text=1-retina" alt="">
+            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
+            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
+            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
+        </div>
+    </tal:block>
+</div>
+
+<tal:comment tal:content="nothing">
 <section class="app-banner carousel carousel-fade slide home-slider" data-ride="carousel"
     id="app-banner"
     i18n:domain="ade25.banner"
@@ -33,3 +54,4 @@
         <a data-slide="next" href="#app-banner" class="right carousel-control animated fadeInRight"><i class="fa fa-chevron-right"></i></a>
     </tal:block>
 </section>
+</tal:comment>
