@@ -1,10 +1,11 @@
-ade25.banner
-============
+# ade25.banner (Bootstrap Carousel Branch)
 
 Plone banner management and carousel implementation
 
-Rationale
----------
+*Warning:* this version of the pacakge features Bootstrap framework specific template semantics and class names that will be discontinued. In order to simplify and correct the implementation the master branch will feature backend agnostic semantics.
+
+
+## Rationale
 
 This addon provides a dexterity banner content type that is for simplicity
 reasons globally addable. A bahavior is provided that can be activated on
@@ -14,8 +15,7 @@ Note: In order to make the plone site aka the front page display banner
 content, you need to set the corresponding marker interface via the ZMI.
 
 
-Hint:
------
+## Hint:
 
 The package provides a helper view to set this marker interface on the site
 root for you callable via '${portal_ul}/@@enable-site-banners'.
