@@ -1,4 +1,4 @@
-# ade25.banner (Bootstrap Carousel Branch)
+# Deprecated: ade25.banner (Bootstrap Carousel Branch)
 
 Plone banner management and carousel implementation
 
