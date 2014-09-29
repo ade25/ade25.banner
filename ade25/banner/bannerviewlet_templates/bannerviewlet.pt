@@ -1,4 +1,5 @@
 <div class="app-banner xowl-carousel"
+    id="app-banner"
     tal:condition="viewlet/has_banners"
     tal:define="show_carousel viewlet/show_carousel"
     tal:attributes="class python:show_carousel and 'app-banner app-banner-carousel' or 'app-banner'">
