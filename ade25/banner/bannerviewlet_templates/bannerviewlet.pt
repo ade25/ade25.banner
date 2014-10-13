@@ -10,11 +10,17 @@
         </div>
     </tal:block>
     <tal:block tal:condition="show_carousel">
-        <div class="app-banner-content">
-            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=1" data-src-retina="http://placehold.it/350x250&text=1-retina" alt="">
+        <div class="app-banner-content owl-carousel">
+            <!--<img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=1" data-src-retina="http://placehold.it/350x250&text=1-retina" alt="">
             <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
             <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
-            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
+            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">-->
+            <tal:block tal:repeat="item viewlet/banners">
+                <tal:item tal:define="banner_idx repeat/item/index;
+                                      item_uid item/UID;">
+                    <div tal:replace="structure python:viewlet.render_item(item_uid)" />
+                </tal:item>
+            </tal:block>
         </div>
     </tal:block>
 </div>
