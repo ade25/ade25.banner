@@ -1,5 +1,6 @@
-<div class="app-banner xowl-carousel"
+<div class="app-banner"
     id="app-banner"
+    i18n:domain="ade25.banner"
     tal:condition="viewlet/has_banners"
     tal:define="show_carousel viewlet/show_carousel"
     tal:attributes="class python:show_carousel and 'app-banner app-banner-carousel' or 'app-banner'">
@@ -11,10 +12,6 @@
     </tal:block>
     <tal:block tal:condition="show_carousel">
         <div class="app-banner-content owl-carousel">
-            <!--<img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=1" data-src-retina="http://placehold.it/350x250&text=1-retina" alt="">
-            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
-            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">
-            <img class="app-banner-item app-banner-item-lazy owl-lazy" data-src="http://placehold.it/350x250&text=2" data-src-retina="http://placehold.it/350x250&text=2-retina" alt="">-->
             <tal:block tal:repeat="item viewlet/banners">
                 <tal:item tal:define="banner_idx repeat/item/index;
                                       item_uid item/UID;">
@@ -24,41 +21,3 @@
         </div>
     </tal:block>
 </div>
-
-<tal:comment tal:content="nothing">
-<section class="app-banner carousel carousel-fade slide home-slider" data-ride="carousel"
-    id="app-banner"
-    i18n:domain="ade25.banner"
-    tal:condition="viewlet/has_banners"
-    tal:define="show_carousel viewlet/show_carousel"
-    tal:attributes="class python:show_carousel and 'app-banner carousel carousel-fade slide home-slider' or 'app-banner slide home-slider'">
-    <tal:block tal:condition="not:show_carousel">
-        <div class="carousel-inner">
-            <div tal:define="item_uid viewlet/static_banner"
-                tal:replace="structure python:viewlet.render_item(item_uid)" />
-        </div>
-    </tal:block>
-    <tal:block tal:condition="show_carousel">
-        <ol class="carousel-indicators">
-            <tal:block tal:repeat="item viewlet/banners">
-                <li tal:define="idx repeat/item/index"
-                    tal:attributes="class python:idx == 0 and 'carousel-indicator active' or 'carousel-indicator';
-                                    data-slide-to idx;
-                                    data-target string:#app-banner"
-                    class="active" data-slide-to="0" data-target="#a-slide"></li>
-            </tal:block>
-        </ol>
-        <div class="carousel-inner dim-in-1">
-            <tal:block tal:repeat="item viewlet/banners">
-                <tal:item tal:define="banner_idx repeat/item/index;
-                                      item_uid item/UID;">
-                    <div tal:replace="structure python:viewlet.render_item(item_uid)" />
-                </tal:item>
-            </tal:block>
-        </div>
-        <!-- /.carousel-inner -->
-        <a data-slide="prev" href="#app-banner" class="left carousel-control animated fadeInLeft"><i class="fa fa-chevron-left"></i></a>
-        <a data-slide="next" href="#app-banner" class="right carousel-control animated fadeInRight"><i class="fa fa-chevron-right"></i></a>
-    </tal:block>
-</section>
-</tal:comment>
