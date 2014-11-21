@@ -22,6 +22,7 @@ from ade25.banner.interfaces import IBannerEnabled
 from ade25.banner import MessageFactory as _
 
 IMG = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs='
+BG = 'background:url({0}) no-repeat 50% 0 transparent;background-size:cover'
 
 
 class IContentBanner(form.Schema, IImageScaleTraversable):
@@ -113,7 +114,7 @@ class BannerView(grok.View):
 
     def banner_background(self):
         img = self.getImageTag()
-        alt = 'background:url({0}) no-repeat 50% 0 transparent;'.format(img)
+        alt = BG.format(img)
         style = 'background: transparent'
         if self.is_first_banner():
             style = alt
