@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Module providing content banners"""
+
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from five import grok
@@ -113,7 +116,7 @@ class BannerView(grok.View):
     grok.name('banner-view')
 
     def update(self):
-        self.show_gallery = len(parent_banners()) > 1
+        self.show_gallery = len(self.parent_banners()) > 1
 
     def banner_background(self):
         img = self.getImageTag()
