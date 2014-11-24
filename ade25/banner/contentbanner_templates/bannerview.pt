@@ -1,5 +1,5 @@
 <div class="app-banner-item item show"
-    tal:condition="not:view/show_gallery"
+    tal:condition="view/show_gallery"
     tal:define="is_active view/is_first_banner;
                 base_class string:app-banner-item app-banner-item-${view/banner_position} app-banner-item-lazy owl-lazy"
     tal:attributes="data-src view/getImageTag;
@@ -24,7 +24,7 @@
     </div>
 </div>
 <div class="app-banner-item item show"
-    tal:condition="view/show_gallery"
+    tal:condition="not:view/show_gallery"
     tal:define="is_active view/is_first_banner;
                 base_class string:app-banner-item app-banner-item-${view/banner_position} app-banner-item-lazy owl-lazy"
     tal:attributes="data-src view/getImageTag;
