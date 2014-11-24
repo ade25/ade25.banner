@@ -112,6 +112,9 @@ class BannerView(grok.View):
     grok.require('zope2.View')
     grok.name('banner-view')
 
+    def update(self):
+        self.show_gallery = len(parent_banners()) > 1
+
     def banner_background(self):
         img = self.getImageTag()
         alt = BG.format(img)

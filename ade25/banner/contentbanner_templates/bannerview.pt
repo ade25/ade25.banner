@@ -1,4 +1,30 @@
 <div class="app-banner-item item show"
+    tal:condition="not:view/show_gallery"
+    tal:define="is_active view/is_first_banner;
+                base_class string:app-banner-item app-banner-item-${view/banner_position} app-banner-item-lazy owl-lazy"
+    tal:attributes="data-src view/getImageTag;
+                    class python:is_active and base_class + ' active' or base_class">
+    <div class="app-banner-item-content">
+        <div class="app-banner-item-body"
+            tal:condition="view/has_data">
+            <div class="app-banner-item-headline">
+                <h1 class="app-baner-item-title">
+                    <span class="colortext"
+                        tal:content="context/headline">
+                        Headline</span>
+                </h1>
+            </div>
+            <div class="app-banner-item-abstract">
+                <p class="app-banner-item-description"
+                    tal:content="context/Description">
+                    Description
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="app-banner-item item show"
+    tal:condition="view/show_gallery"
     tal:define="is_active view/is_first_banner;
                 base_class string:app-banner-item app-banner-item-${view/banner_position} app-banner-item-lazy owl-lazy"
     tal:attributes="data-src view/getImageTag;
