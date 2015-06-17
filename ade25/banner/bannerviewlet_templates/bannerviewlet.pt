@@ -11,7 +11,7 @@
         </div>
     </tal:block>
     <tal:block tal:condition="show_carousel">
-        <div class="app-banner-content owl-carousel">
+        <div class="app-banner-content app-js-carousel">
             <tal:block tal:repeat="item viewlet/banners">
                 <tal:item tal:define="banner_idx repeat/item/index;
                                       item_uid item/UID;">
