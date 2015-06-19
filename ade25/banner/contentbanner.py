@@ -121,7 +121,8 @@ class BannerView(grok.View):
     def banner_background(self):
         img = self.getImageTag()
         alt = BG.format(img)
-        style = 'background: transparent'
+        # style = 'background: transparent'
+        style = alt
         if self.is_first_banner():
             style = alt
         return style
