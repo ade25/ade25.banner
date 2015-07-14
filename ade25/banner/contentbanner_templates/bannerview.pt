@@ -21,6 +21,10 @@
                     Description
                 </p>
             </div>
+            <div class="app-banner-text"
+                    tal:condition="context/text"
+                    tal:content="structure context/text/output" />
+
         </div>
     </div>
 </div>
@@ -47,6 +51,10 @@
                     Description
                 </p>
             </div>
+            <div class="app-banner-text"
+                    tal:condition="context/text"
+                    tal:content="structure context/text/output" />
+
         </div>
     </div>
 </div>

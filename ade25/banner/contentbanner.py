@@ -25,7 +25,7 @@ from ade25.banner.interfaces import IBannerEnabled
 from ade25.banner import MessageFactory as _
 
 IMG = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs='
-BG = 'background:url({0}) no-repeat 50% 0 transparent;background-size:cover'
+BG = 'background:url({0}) no-repeat 50% 0 transparent;'
 
 
 class IContentBanner(form.Schema, IImageScaleTraversable):
