@@ -6,25 +6,26 @@
                     style string:${view/banner_background};
                     class python:is_active and base_class + ' active' or base_class">
     <div class="app-banner-item-content">
-        <div class="app-banner-item-body"
-            tal:condition="view/has_data">
-            <div class="app-banner-item-headline">
+        <div class="app-banner-item-body">
+            <div class="app-banner-item-headline"
+                 tal:condition="view/has_data">
                 <h1 class="app-baner-item-title">
                     <span class="colortext"
                         tal:content="context/headline">
                         Headline</span>
                 </h1>
             </div>
-            <div class="app-banner-item-abstract">
+            <div class="app-banner-item-abstract"
+                 tal:condition="view/has_data">
                 <p class="app-banner-item-description"
                     tal:content="context/Description">
                     Description
                 </p>
             </div>
             <div class="app-banner-text"
-                    tal:condition="context/text"
-                    tal:content="structure context/text/output" />
-
+                tal:condition="view/has_data"
+                tal:condition="context/text"
+                tal:content="structure context/text/output" />
         </div>
     </div>
 </div>
