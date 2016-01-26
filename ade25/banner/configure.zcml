@@ -40,7 +40,6 @@
         title="Banner and Carousel Display"
         description="Mark content types as banner enabled to display the banner and carousel viewlet"
         provides="ade25.banner.interfaces.IBannerEnabled"
-        for="plone.dexterity.interfaces.IDexterityContent"
         />
 
 </configure>
