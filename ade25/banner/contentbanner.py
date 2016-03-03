@@ -88,7 +88,7 @@ class ContentView(grok.View):
     def has_data(self):
         context = aq_inner(self.context)
         has_content = False
-        if (context.headline or context.Description()):
+        if (context.headline or context.text or context.Description()):
             has_content = True
         return has_content
 
