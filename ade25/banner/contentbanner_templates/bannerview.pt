@@ -8,19 +8,13 @@
     <div class="app-banner-item-content">
         <div class="app-banner-item-body"
                 tal:condition="view/has_data">
-            <div class="app-banner-item-headline">
-                 
-                <h1 class="app-baner-item-title">
-                    <span class="colortext"
-                        tal:content="context/headline">
-                        Headline</span>
-                </h1>
+            <div class="app-banner-item-title" tal:condition="context/headline">
+                <div class="app-banner-item-headline">
+                    ${context/headline}
+                </div>
             </div>
-            <div class="app-banner-item-abstract">
-                <p class="app-banner-item-description"
-                    tal:content="context/Description">
-                    Description
-                </p>
+            <div class="app-banner-item-abstract" tal:condition="context/Description">
+                ${context/Description}
             </div>
             <div class="app-banner-text"
                 tal:condition="context/text"
