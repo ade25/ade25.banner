@@ -145,6 +145,12 @@ class BannerView(grok.View):
             has_content = True
         return has_content
 
+    def has_link_action(self):
+        context = aq_inner(self.context)
+        if context.link:
+            return True
+        return False
+
     def banner_position(self):
         context = aq_inner(self.context)
         counter = 0
