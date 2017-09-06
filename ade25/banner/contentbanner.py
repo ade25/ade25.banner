@@ -7,6 +7,7 @@ from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.textfield import RichText
 from plone.app.z3cform.widget import LinkFieldWidget
+from plone.app.z3cform.utils import replace_link_variables_by_paths
 from plone.dexterity.content import Item
 from plone.directives import form
 from plone.namedfile.field import NamedBlobImage
@@ -150,6 +151,12 @@ class BannerView(grok.View):
         if context.link:
             return True
         return False
+
+    def get_link_action(self):
+        context = aq_inner(self.context)
+        link = context.link
+        link_action = replace_link_variables_by_paths(context, link)
+        return link_action
 
     def banner_position(self):
         context = aq_inner(self.context)

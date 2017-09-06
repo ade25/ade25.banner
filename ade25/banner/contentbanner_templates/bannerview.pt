@@ -11,7 +11,7 @@
             <div class="app-banner-item-title" tal:condition="context/headline">
                 <div class="app-banner-item-headline">
                     <tal:link tal:condition="context/link">
-                        <a class="app-banner__action app-banner__action--link" href="${context/link}">${context/headline}</a>
+                        <a class="app-banner__action app-banner__action--link" href="${view/get_link_action}">${context/headline}</a>
                     </tal:link>
                     <tal:plain tal:condition="not:context/link">
                             ${context/headline}
@@ -26,8 +26,10 @@
                 tal:content="structure context/text/output" />
             <tal:action tal:condition="context/link">
                 <div class="app-banner__action-block">
-                    <a class="app-btn app-btn-default app-banner__action app-banner__action--button" href="${context/link}">
+                    <a class="app-btn app-btn-default app-banner__action app-banner__action--button" href="${view/get_link_action}"
+                        tal:attributes="href view/get_link_action">
                         weiterlesen&hellip;
+
                     </a>
                 </div>
             </tal:action>
