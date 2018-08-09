@@ -1,7 +1,8 @@
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_parent
 from five import grok
 from plone import api
 
+from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.viewlets.interfaces import IPortalFooter
 from plone.uuid.interfaces import IUUID
 
@@ -31,9 +32,14 @@ class BannerViewlet(grok.Viewlet):
 
     def banners(self):
         context = aq_inner(self.context)
+        assignment_context = aq_parent(context)
+        if INavigationRoot.providedBy(context):
+            assignment_context = context
         catalog = api.portal.get_tool(name='portal_catalog')
         items = catalog(object_provides=IContentBanner.__identifier__,
-                        path=dict(query='/'.join(context.getPhysicalPath()),
+                        path=dict(query='/'.join(
+                                    assignment_context.getPhysicalPath()
+                                    ),
                                   depth=1),
                         review_state='published',
                         sort_on='getObjPositionInParent')
