@@ -9,6 +9,8 @@ from plone.uuid.interfaces import IUUID
 from ade25.banner.interfaces import IBannerEnabled
 from ade25.banner.contentbanner import IContentBanner
 
+from zope.component import getMultiAdapter
+
 
 class BannerViewlet(grok.Viewlet):
     grok.context(IBannerEnabled)
@@ -32,8 +34,12 @@ class BannerViewlet(grok.Viewlet):
 
     def banners(self):
         context = aq_inner(self.context)
-        assignment_context = aq_parent(context)
-        if INavigationRoot.providedBy(context):
+        parent = aq_parent(self.context)
+        context_state = getMultiAdapter(
+            (context, self.request), name=u'plone_context_state')
+        if context_state.is_default_page() and INavigationRoot.providedBy(
+                parent):
+        else:
             assignment_context = context
         catalog = api.portal.get_tool(name='portal_catalog')
         items = catalog(object_provides=IContentBanner.__identifier__,
