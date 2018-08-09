@@ -39,6 +39,7 @@ class BannerViewlet(grok.Viewlet):
             (context, self.request), name=u'plone_context_state')
         if context_state.is_default_page() and INavigationRoot.providedBy(
                 parent):
+            assignment_context = parent
         else:
             assignment_context = context
         catalog = api.portal.get_tool(name='portal_catalog')
