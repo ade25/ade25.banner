@@ -8,6 +8,7 @@ from zope.component import getUtility
 from zope.lifecycleevent import modified
 
 from plone.directives import form
+from plone.supermodel import model
 from z3c.form import button
 
 from plone.namedfile.field import NamedBlobImage
@@ -21,7 +22,7 @@ from ade25.banner.contentbanner import IContentBanner
 from ade25.banner import MessageFactory as _
 
 
-class IContentBannerEdit(form.Schema):
+class IContentBannerEdit(model.Schema):
 
     headline = schema.TextLine(
         title=_(u"Banner Headline"),

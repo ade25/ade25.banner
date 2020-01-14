@@ -27,7 +27,7 @@ setup(name='ade25.banner',
       install_requires=[
           'setuptools',
           'plone.api',
-          'plone.app.dexterity [grok]',
+          'plone.app.dexterity',
           'plone.namedfile [blobs]',
           # -*- Extra requirements: -*-
       ],

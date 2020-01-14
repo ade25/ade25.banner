@@ -12,7 +12,7 @@
   <includeDependencies package="." />
 
   <!-- Grok the package to initialize schema interfaces and content classes -->
-  <grok:grok package="." />
+  <!--<grok:grok package="." />-->
 
   <!-- Register a resource directory from which we can deploy static
    resource files. -->
