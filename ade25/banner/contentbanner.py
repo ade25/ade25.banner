@@ -9,13 +9,14 @@ from plone.app.textfield import RichText
 from plone.app.z3cform.widget import LinkFieldWidget
 from plone.app.z3cform.utils import replace_link_variables_by_paths
 from plone.dexterity.content import Item
-from plone.directives import form
+from plone.supermodel import model
 from plone.namedfile.field import NamedBlobImage
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.uuid.interfaces import IUUID
 from Products.Five.utilities.marker import mark
 from zope import schema
 from zope.component import getMultiAdapter
+from zope.interface import implementer
 
 from ade25.banner.interfaces import IBannerEnabled
 
@@ -25,7 +26,7 @@ IMG = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAAQABAAACAkQBADs='
 BG = 'background:url({0}) no-repeat 50% 0 transparent;'
 
 
-class IContentBanner(form.Schema, IImageScaleTraversable):
+class IContentBanner(model.Schema, IImageScaleTraversable):
     """
     A banner acting as a page header
     """
@@ -60,8 +61,8 @@ class IContentBanner(form.Schema, IImageScaleTraversable):
     )
 
 
+@implementer(IContentBanner)
 class ContentBanner(Item):
-    grok.implements(IContentBanner)
     pass
 
 
