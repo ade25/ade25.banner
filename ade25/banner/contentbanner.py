@@ -2,7 +2,8 @@
 """Module providing content banners"""
 from Acquisition import aq_inner
 from Acquisition import aq_parent
-from five import grok
+# from five import grok
+from Products.Five.browser import BrowserView
 from plone import api
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.textfield import RichText
@@ -10,6 +11,7 @@ from plone.app.z3cform.widget import LinkFieldWidget
 from plone.app.z3cform.utils import replace_link_variables_by_paths
 from plone.dexterity.content import Item
 from plone.supermodel import model
+from plone.autoform import directives
 from plone.namedfile.field import NamedBlobImage
 from plone.namedfile.interfaces import IImageScaleTraversable
 from plone.uuid.interfaces import IUUID
@@ -48,7 +50,7 @@ class IContentBanner(model.Schema, IImageScaleTraversable):
         title=_(u"Block Body Text"),
         required=False,
     )
-    form.widget(link=LinkFieldWidget)
+    directives.widget(link=LinkFieldWidget)
     link = schema.TextLine(
         title=_(u"Link"),
         description=_(u"Optional internal or external link that will be "
@@ -66,10 +68,7 @@ class ContentBanner(Item):
     pass
 
 
-class View(grok.View):
-    grok.context(IContentBanner)
-    grok.require('zope2.View')
-    grok.name('view')
+class View(BrowserView):
 
     def render_item(self):
         context = aq_inner(self.context)
@@ -77,10 +76,7 @@ class View(grok.View):
         return template
 
 
-class ContentView(grok.View):
-    grok.context(IContentBanner)
-    grok.require('zope2.View')
-    grok.name('content-view')
+class ContentView(BrowserView):
 
     def asignment_context(self):
         context = aq_inner(self.context)
@@ -115,10 +111,7 @@ class ContentView(grok.View):
         return template
 
 
-class BannerView(grok.View):
-    grok.context(IContentBanner)
-    grok.require('zope2.View')
-    grok.name('banner-view')
+class BannerView(BrowserView):
 
     def update(self):
         self.show_gallery = len(self.parent_banners()) > 1
@@ -193,10 +186,7 @@ class BannerView(grok.View):
         return image_tag
 
 
-class TransitionState(grok.View):
-    grok.context(IContentBanner)
-    grok.require('cmf.ModifyPortalContent')
-    grok.name('transition-state')
+class TransitionState(BrowserView):
 
     def render(self):
         context = aq_inner(self.context)
@@ -211,10 +201,7 @@ class TransitionState(grok.View):
         return self.request.response.redirect(next_url)
 
 
-class EnableSiteBanners(grok.View):
-    grok.context(INavigationRoot)
-    grok.require('cmf.ManagePortal')
-    grok.name('enable-site-banners')
+class EnableSiteBanners(BrowserView):
 
     def render(self):
         portal = api.portal.get()
